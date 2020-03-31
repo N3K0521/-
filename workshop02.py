@@ -16,18 +16,22 @@ def details():
 
 # Task 1
 def calculate(x, y, operator):
+    def add(x, y):
+        return x + y
+    def minus(x, y):
+        return x - y
+    def multiply(x, y):
+        return x * y
+    def divide(x, y):
+        return x / y
     if operator == '+':
-        print('{} + {} = '.format(x, y))
-        print(x + y)
+        return add(x, y)
     elif operator == '-':
-        print('{} - {} = '.format(x, y))
-        print(x - y)
-    elif operator == '*':
-        print('{} * {} = '.format(x, y))
-        print(x * y)
+        return minus(x, y)
+    elif operator == 'x':
+        return multiply(x, y)
     elif operator == '/':
-        print('{} / {} = '.format(x, y))
-        print(x / y)
+        return divide(x, y)
 
 # Task 2
 def is_leap_year(year):
@@ -39,28 +43,40 @@ def is_leap_year(year):
 def leap_year_answer(year):
     if ((year % 4 == 0) and (year % 100 != 0)) or (year % 400 == 0):
         if (year >= 2020):
-            print ('Year ' + str(year) + 'will be a leap year.')
+            return ('Year ' + str(year) + ' will be a leap year')
         else:
-            print ('Year ' + str(year) + 'was a leap year.')
+            return ('Year ' + str(year) + ' was a leap year')
     else:
         if (year >= 2020):
-            print ('Year ' + str(year) + 'will not be a leap year.')
+            return ('Year ' + str(year) + ' will not be a leap year')
         else:
-            print ('Year ' + str(year) + 'was not a leap year.')
+            return ('Year ' + str(year) + ' was not a leap year')
 
 # Task 3
 def next_triangular_number(num):
-    pass
-
+    i = 1
+    output = 0
+    while i <= num:
+        output = num * (i + 1) / 2 + 1
+        i = output + 1
+    return output
 
 # Task 4
 def add(numbers):
-    pass
+    output = 0
+    for i in range(1, len(numbers), 2):
+        output += numbers[i]
+    return output
 
 
 def flip(binary_string):
-    pass
-
+    output = ''
+    for i in range(0, len(binary_string)):
+        if binary_string[i] == '0':
+            output += '1'
+        else:
+            output += '0'
+    return output
 
 # Challenge
 def estimate_e(error):
