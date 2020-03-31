@@ -16,17 +16,37 @@ def details():
 
 # Task 1
 def calculate(x, y, operator):
-    pass
-
+    if operator == '+':
+        print('{} + {} = '.format(x, y))
+        print(x + y)
+    elif operator == '-':
+        print('{} - {} = '.format(x, y))
+        print(x - y)
+    elif operator == '*':
+        print('{} * {} = '.format(x, y))
+        print(x * y)
+    elif operator == '/':
+        print('{} / {} = '.format(x, y))
+        print(x / y)
 
 # Task 2
 def is_leap_year(year):
-    pass
-
+    if ((year % 4 == 0) and (year % 100 != 0)) or (year % 400 == 0):
+        return True
+    else: 
+        return False
 
 def leap_year_answer(year):
-    pass
-
+    if ((year % 4 == 0) and (year % 100 != 0)) or (year % 400 == 0):
+        if (year >= 2020):
+            print ('Year ' + str(year) + 'will be a leap year.')
+        else:
+            print ('Year ' + str(year) + 'was a leap year.')
+    else:
+        if (year >= 2020):
+            print ('Year ' + str(year) + 'will not be a leap year.')
+        else:
+            print ('Year ' + str(year) + 'was not a leap year.')
 
 # Task 3
 def next_triangular_number(num):
