@@ -14,7 +14,6 @@ def details():
     return str(student_number), student_email, name
 
 ###Task 1
-###Task 1
 def partial_sum(start, end, step):
     output = 0
     if end >= 0:
