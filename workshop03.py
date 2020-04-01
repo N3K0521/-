@@ -13,14 +13,28 @@ def details():
     name = 'Huixin Wang' #write your name as it appears on Moodle
     return str(student_number), student_email, name
 
-
+###Task 1
 ###Task 1
 def partial_sum(start, end, step):
-    pass
-
+    output = 0
+    if end >= 0:
+        end = end + 1
+    elif end < 0:
+            end = end - 1
+    for i in range(start, end, step):
+        output = output + i
+    return output
+    
 ###Task 2
 def reverse_strings(my_list):
-    pass
+    i = 0
+    flip = 0
+    while i < (len(my_list)/2):
+        flip = my_list[i]
+        my_list[i] = my_list[(len(my_list))-1-i]
+        my_list[(len(my_list))-1-i] = flip
+        i = i + 1
+    return (''.join(my_list))
 
 def complete(my_list):
     pass
