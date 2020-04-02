@@ -79,5 +79,16 @@ def flip(binary_string):
     return output
 
 # Challenge
+import math
+e = math.e
 def estimate_e(error):
-    pass
+    x = 1
+    i = 1 
+    fact = 1
+    while abs(x - e) >= error:
+        fact = fact * i
+        x = x + (1 / fact)
+        i += 1
+    return x
+
+print(estimate_e(0.1))
