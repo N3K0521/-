@@ -59,7 +59,7 @@ def icecreams(x, summer):
             return 2-x
         return 0
 # Part C - Rounding
-def roudning(n):
+def rounding(n):
     remainder = n%10
     num = n-remainder
     if remainder < 5:
