@@ -67,3 +67,9 @@ def flip(numberofflipping):
             countTail+=1
     print('The probability of getting Head is',100*(countHead/numberofflipping),'%')
     print('The probability of getting Tail is',100*(countTail/numberofflipping),'%')
+
+# another solution:
+from random import random
+def flip(bias):
+    return 'The flipped coin with bias {} has a value of heads: {}' \
+        .format(bias, bias > random())
