@@ -55,5 +55,20 @@ def addition_table(numbers):
 
 ###Task 4
 def remove_outliers(table):
-    pass
+    maximum = [0][0]
+    minimum = [0][0]
+    for i in range(len(table)):
+        for j in range(len(table[i])):
+            if table[i][j] > maximum:
+                maximum = table[i][j]
+            elif table[i][j] < minimum:
+                minimum = table[i][j]
+    avg = (maximum + minimum)/2
+    for i in range(len(table)):
+        for j in range(len(table[i])):
+            if table[i][j] == maximum:
+                table[i][j] = avg
+            elif table[i][j] == minimum:
+                table[i][j] = avg
+    return table
     
