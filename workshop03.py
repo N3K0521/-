@@ -36,11 +36,22 @@ def reverse_strings(my_list):
     return (''.join(my_list))
 
 def complete(my_list):
-    pass
+    start = my_list[0]
+    end = my_list[-1]
+    output = []
+    for i in range(start, end + 1):
+        output.append(i)
+    return output    
 
 ###Task 3
 def addition_table(numbers):
-    pass
+    table = []
+    for j in range(3):
+        row = []
+        for i in range(0, len(numbers)):
+            row.append(numbers[i] + j + 1)
+        table.append(row)
+    return table
 
 ###Task 4
 def remove_outliers(table):
