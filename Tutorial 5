@@ -1,0 +1,20 @@
+# Tutorial 5
+
+# Prepared question
+'''
+When writing a building, electricians often have to solve the problem: how can I connect
+all electrical components in this building while minimizing the amount of wire used?
+
+An electrician is trying to solve this problem for the building shown in Figure 1. Circles
+represent an electrical component, and lines indicate that it is possible to install a connecting
+wire between two components (for example, it is possible to install a wire between the intercom
+and the light: but not the light and the toaster). You can assume that every connection takes exactly
+1 metre of wire. Every component must be connected, either directly or indirectly, to the main.
+
+1. What abstract data type allows us to translate this into a computational problem?
+
+2. Give a potential wiring of this building that minimizes the amount of wire the electrician must use.
+You may describe this wiring in any way that you like.
+
+You must attempt both parts to receive the mark.
+'''
