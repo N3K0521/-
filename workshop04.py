@@ -98,3 +98,14 @@ def rev_manual_loop(mylist):
     return a
 '''
 
+# sum()
+def sum(lst):
+    res = 0
+    for element in lst:
+        res += element
+    return res
+
+'''Complex Functions'''
+def bin(x):
+    return format(x, '#b')
+
