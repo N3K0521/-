@@ -31,7 +31,7 @@ def is_sorted(seq):
 # abs()
 def abs(x):
     if x >= 0:
-        absx = x
+        absx = x        # absx is refering to the absolute value of x
     elif x < 0:
         absx = 0 - x
     return absx
@@ -74,27 +74,27 @@ def reversed(seq):
         res.append(seq[ri - i])
     return res
 '''
-def rev_manual_pos_gen(mylist):
-    max_index = len(mylist) - 1
-    return [ mylist[max_index - index] for index in range(len(mylist)) ]
+def rev_manual_pos_gen(lst):
+    max_index = len(lst) - 1
+    return [ lst[max_index - index] for index in range(len(lst)) ]
 
-def rev_manual_neg_gen(mylist):
+def rev_manual_neg_gen(lst):
     ## index is 0 to 9, but we need -1 to -10
-    return [ mylist[-index-1] for index in range(len(mylist)) ]
+    return [ lst[-index-1] for index in range(len(lst)) ]
 
-def rev_manual_index_loop(mylist):
+def rev_manual_index_loop(lst):
     a = []
-    reverse_index = len(mylist) - 1
-    for index in range(len(mylist)):
-        a.append(mylist[reverse_index - index])
+    reverse_index = len(lst) - 1
+    for index in range(len(lst)):
+        a.append(lst[reverse_index - index])
     return a
 
-def rev_manual_loop(mylist):
+def rev_manual_loop(lst):
     a = []
-    reverse_index = len(mylist)
-    for index, _ in enumerate(mylist):
+    reverse_index = len(lst)
+    for index, _ in enumerate(lst):
         reverse_index -= 1
-        a.append(mylist[reverse_index])
+        a.append(lst[reverse_index])
     return a
 '''
 
