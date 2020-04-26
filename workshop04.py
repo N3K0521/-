@@ -106,6 +106,83 @@ def sum(lst):
     return res
 
 '''Complex Functions'''
+# bin()
 def bin(x):
-    return format(x, '#b')
+    start = "-0b"
+    if x < 0:
+        x = abs(x)
+        start = "-0b"
+    string = str(x%2)
+    x //= 2
+    while x > 0:
+        string = str(x%2) + string
+        x //= 2
+    return start + string
 
+# enumerate()
+def enumerate(seq, start = 0):
+    enum = []
+    for i in range(len(seq)):
+        enum.append((i+start, seq[i]))
+    return enum
+
+# filter()
+def filter(function, seq):
+    filt = []
+    for item in seq:
+        if function(item):
+            filt.append(item)
+    return
+
+# map()
+def map(function, seq):
+    new_list = []
+    for item in seq:
+        new_list.append(function(item))
+    return new_list
+
+# lim_range()
+def lim_range(start, stop, step = 1):
+    my_range = []
+    i = start
+    if step > 0:
+        while i < stop:
+            my_range.append(i)
+            i += step
+    else:
+        while i > stop:
+            my_range.append(i)
+            i += step
+    return my_range
+
+# round()
+def round(number, ndigits = 0):
+    # Remove all numbers but the last to be rounded using integer division
+    # if ndigits = 0, number // 0.1, ndigits = 1, number // 0,01...
+    # Check whether negative, and if so remove negative
+    negative = number < 0
+    number = abs(number)/(10**(-(ndigits + 1)))
+    # Remove all extra digits
+    number //= 1
+    rounding = number % 10
+    if rounding > 5:
+        number = number // 10 + 1
+    elif rounding < 5:
+        number = number // 10
+    else:
+        number = number // 10
+        if number % 10 %2 == 1:
+            number += 1
+    # Shift number to correct decimal places
+    number /= 10 ** ndigits
+    if negative:
+        number *= -1
+    return number
+
+# set()
+def set(aList):
+    my_set = []
+    for item in aList:
+        if item not in my_set:
+            my_set.append(item)
+    return my_set
