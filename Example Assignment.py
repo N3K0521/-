@@ -1,5 +1,6 @@
 """
-Author: <name> (<student_id>)
+Author: <Huixin Wang>
+Student ID: 31552544
 
 In this assignment we implement the backend of an intelligent product
 search engine where potential customers can search a database of products
@@ -29,13 +30,14 @@ assignment sheet.
 
 # Part 1 (due Week 6) #
 
-
-def satisfies(product, cond):
+#Task A: Product selection
+relate = ['<', '<=', '==', '>=', '>', '!=']
+def satisfies(product, conds):
     """
     Determines whether a product satisfies a given condition.
 
     Input : A product feature list (product() and a condition
-            (cond) as specified above.
+            (conds) as specified above.
     Output: True if cond holds for the product otherwise False.
 
     For example, consider the following conditions:
@@ -59,8 +61,40 @@ def satisfies(product, cond):
      language elements used.>
 
     """
-    pass
+    feature = product[conds[0]]
+    relation = conds[1]
 
+    if relation == '<':
+        if conds[2] < feature:
+                return False
+        return True
+    elif relation == '<=':
+        if conds[2] <= feature:
+                return False
+        return True
+    elif relation == '==':
+        if conds[2] == feature:
+                return False
+        return True
+    elif relation == '>=':
+        if conds[2] >= feature:
+                return False
+        return True
+    elif relation == '>':
+        if conds[2] > feature:
+                return False
+        return True
+
+    elif conds[2] != feature:
+        return False
+    return True
+large_screen = (2,'>=', 6.3)
+inexpensive = (4, '<=', 1000)
+apple_product = (1, '==', 'apple')
+not_apple = (1, '!=', 'Apple')
+satisfies(['Nova 5T', 'Huawei', 6.26, 3750, 497], inexpensive)
+satisfies(['iPhone11', 'Apple', 6.1, 3110, 1280], inexpensive)
+satisfies(['iPhone11', 'Apple', 6.1, 3110, 1280], large_screen)
 
 def selection(products, conditions):
     """
@@ -96,7 +130,7 @@ def selection(products, conditions):
     """
     pass
 
-
+# Task B: Product Ranking
 def linearly_ranked(products, weights):
     """
     Ranks products in order of preference as specified by a linear
