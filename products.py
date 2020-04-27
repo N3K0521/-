@@ -61,6 +61,7 @@ def satisfies(product, conds):
      language elements used.>
 
     """
+    # (i, c, v) #
     feature = product[conds[0]]
     relation = conds[1]
 
@@ -88,15 +89,27 @@ def satisfies(product, conds):
     elif conds[2] != feature:
         return False
     return True
+
 large_screen = (2,'>=', 6.3)
 inexpensive = (4, '<=', 1000)
 apple_product = (1, '==', 'apple')
 not_apple = (1, '!=', 'Apple')
-satisfies(['Nova 5T', 'Huawei', 6.26, 3750, 497], inexpensive)
-satisfies(['iPhone11', 'Apple', 6.1, 3110, 1280], inexpensive)
-satisfies(['iPhone11', 'Apple', 6.1, 3110, 1280], large_screen)
 
-def selection(products, conditions):
+# Test cases #
+print(satisfies(['Nova 5T', 'Huawei', 6.26, 3750, 497], inexpensive))
+print(satisfies(['iPhone11', 'Apple', 6.1, 3110, 1280], inexpensive))
+print(satisfies(['iPhone11', 'Apple', 6.1, 3110, 1280], large_screen))
+print(satisfies(['iPhone11', 'Apple', 6.1, 3110, 1280], apple_product))
+
+phones = [['iPhone11', 'Apple', 6.1, 3110, 1200], 
+         ['Galaxy S20', 'Samsung', 6.2, 4000, 1348],
+         ['Nova 5T', 'Huawei', 6.26, 3750, 497],
+         ['V40 ThinQ', 'LG', 6.4, 3300, 598],
+         ['Reno Z', 'Oppo', 6.4, 4035, 397]]
+c = ['<', '<=', '==', '>=', '>', '!=']
+not_apple = (1, '!=', 'Apple')
+
+def selection(products, conds):
     """
     Filters a given product table by a list of conditions.
 
@@ -128,9 +141,42 @@ def selection(products, conditions):
      language elements used.>
 
     """
-    pass
+    feature = conds[0]
+    relation = conds[1]
+    ans = []
+    if relation == '<':
+        for _ in range(len(phones)):
+            if conds[2] < phones[_][feature]:
+                ans.append(phones[_])
+    
+    elif relation == '<=':
+        for _ in range(len(phones)):
+            if conds[2] <= phones[_][feature]:
+                ans.append(phones[_]) 
 
-# Task B: Product Ranking
+    elif relation == '==':
+        for _ in range(len(phones)):
+            if conds[2] == phones[_][feature]:
+                ans.append(phones[_])
+            
+    elif relation == '>=':
+        for _ in range(len(phones)):
+            if conds[2] >= phones[_][feature]:
+                ans.append(phones[_])
+
+    elif relation == '>':
+        for _ in range(len(phones)):
+            if conds[2] > phones[_][feature]:
+                ans.append(phones[_])
+
+    elif conds[2] != feature:
+        for _ in range(len(phones)):
+            if conds[2] != phones[_][feature]:
+                ans.append(phones[_])
+
+    return ans
+
+# Task B: Product Ranking #
 def linearly_ranked(products, weights):
     """
     Ranks products in order of preference as specified by a linear
