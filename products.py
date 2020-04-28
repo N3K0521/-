@@ -177,7 +177,16 @@ def selection(products, conds):
     return ans
 
 # Task B: Product Ranking #
+def sort_table(table):
+    for i in range(len(table)):
+        max_index = i # Current maximum production index
+        for j in range(i + 1, len(table)):
+            if table[j][1] > table[max_index][1]:
+                max_index = j
+        table[i], table[max_index] = table[max_index], table[i]
+    return table
 def linearly_ranked(products, weights):
+    ans = []
     """
     Ranks products in order of preference as specified by a linear
     weight vector.
@@ -220,12 +229,11 @@ def linearly_ranked(products, weights):
      language elements used.>
 
     """
-    pass
-
+    if weights[0] == None and weights[1] == None:
+        
+pass
 
 # Part 2 (due Week 11) #
-
-
 def relevant(products, preferences):
     """
     Filters a product table for relevant products given user preferences.
