@@ -1,19 +1,20 @@
 """
-Author: <Huixin Wang>
+Student name: Huixin Wang
 Student ID: 31552544
 
-In this assignment we implement the backend of an intelligent product
-search engine where potential customers can search a database of products
-characterized by different features taking into account the customer's
-preferences.
+This project implement a product search engine where user can search for
+a product from databases by specifing its different feature(s).
+"""
 
-Functions for 1 and 2 are due in Part 1 of the assignment. Functions
-for 3 and 4 are due in Part 2.
+# Part 1
+# Task A: Product selection
+"""
+Products are selected based on hard criteria, using Python objects
+representing conditions (i, c, v):
+i: representing an integer feature index
+c: relation symbol in ['<', '<=' '==', '>=', '>', '!=']
+v: some feature value
 
-As a global conventions, to select products based on hard criteria,
-we will use Python objects representing conditions. These are represented
-as triples (i, c, v) where i is an integer feature index, c is a relation
-symbol in ['<', '<=' '==', '>=', '>', '!='], and v is some feature value.
 A product (represented by a feature vector) _satisfies_ condition (i, c, v)
 if its i-th feature value is in relation c with the value v. This will be
 implemented in a function 'satisfies'. For example:
@@ -22,16 +23,8 @@ implemented in a function 'satisfies'. For example:
 True
 >>> satisfies(['iPhone11', 'Apple', 6.1, 3110, 1280], inexpensive)
 False
-
-For more information see the function documentations below and the
-assignment sheet.
 """
-
-
-# Part 1 (due Week 6) #
-
-#Task A: Product selection
-relate = ['<', '<=', '==', '>=', '>', '!=']
+c = ['<', '<=', '==', '>=', '>', '!=']
 def satisfies(product, conds):
     """
     Determines whether a product satisfies a given condition.
@@ -63,27 +56,27 @@ def satisfies(product, conds):
     """
     # (i, c, v) #
     feature = product[conds[0]]
-    relation = conds[1]
+    c = conds[1]
 
-    if relation == '<':
+    if c == '<':
         if conds[2] < feature:
-                return False
+            return False
         return True
-    elif relation == '<=':
+    elif c == '<=':
         if conds[2] <= feature:
-                return False
+            return False
         return True
-    elif relation == '==':
+    elif c == '==':
         if conds[2] == feature:
-                return False
+            return False
         return True
-    elif relation == '>=':
+    elif c == '>=':
         if conds[2] >= feature:
-                return False
+            return False
         return True
-    elif relation == '>':
+    elif c == '>':
         if conds[2] > feature:
-                return False
+            return False
         return True
 
     elif conds[2] != feature:
@@ -177,16 +170,7 @@ def selection(products, conds):
     return ans
 
 # Task B: Product Ranking #
-def sort_table(table):
-    for i in range(len(table)):
-        max_index = i # Current maximum production index
-        for j in range(i + 1, len(table)):
-            if table[j][1] > table[max_index][1]:
-                max_index = j
-        table[i], table[max_index] = table[max_index], table[i]
-    return table
 def linearly_ranked(products, weights):
-    ans = []
     """
     Ranks products in order of preference as specified by a linear
     weight vector.
@@ -229,11 +213,12 @@ def linearly_ranked(products, weights):
      language elements used.>
 
     """
-    if weights[0] == None and weights[1] == None:
-        
-pass
+    pass
+
 
 # Part 2 (due Week 11) #
+
+
 def relevant(products, preferences):
     """
     Filters a product table for relevant products given user preferences.
