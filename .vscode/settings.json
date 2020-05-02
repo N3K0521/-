@@ -6,6 +6,7 @@
         "cond",
         "conds",
         "filt",
-        "ndigits"
+        "ndigits",
+        "product"
     ]
 }
