@@ -17,13 +17,13 @@ def details():
 # Task 1
 def word_from_file(file):
     f = open(file)
-    res = []
-    for i in f:
-        i = i.replace('\n', '')
-        line = i.split(',')
-        word = line[0].strip()
-        res = word
-    return res
+    word = ''
+    while word == '':
+        line = f.readline().strip().split()
+        if len(line) > 0:
+            word = line[0]
+    f.close()
+    return word
         
 def nested_int_list_from_file(file):
     f = open(file)
@@ -46,11 +46,12 @@ def degree(graph, vertex):
     return res
 
 def is_path(graph, path):
-    for i in range(len(path)-1):
-        if graph[path[i]][path[i+1]]:
-            return True
-        break
-    return False
+    for v in range(len(path)-1):
+        if path[v] >= len(graph) or path[v+1] >= len(graph):
+            return False
+        if graph[path[v]][path[v+1]] == 0:
+            return False
+    return True
             
 
 # Task 3
@@ -86,9 +87,40 @@ def print_as_grid(graph, n):
             print('\n', end='')
 
 def grid_graph(m, n):
-    pass
+    def row_index(k):
+        return k // n
+    def col_index(k):
+        return k % n
+    def neighbors(i):
+        res = []
+        if col_index(i) > 0:
+            res.append(i-1)
+        if col_index(i) < n - 1:
+            res.append(i+1)
+        if row_index(i) > 0:
+            res.append(i-n)
+        if row_index(i) < m-1:
+            res.append(i+n)
+        return res
+
+    graph = []
+    for i in range(m*n):
+        row = []
+        nb = neighbors(i)
+        for j in range(m*n):
+            if j in nb:
+                row.append(1)
+            else:
+                row.append(0)
+    return graph
 
 
 # Task 4
+def insert(k, table, i):
+    j = k
+    while j > 0 and table[j-1][i] > table[j][i]:
+        table[j-1], table[j] = table[j], table[j-1]
+        j = j - 1
 def sort_table(table, col):
-    pass
+    for row in range(1, len(table)):
+        insert(row, table, col)
