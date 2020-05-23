@@ -109,6 +109,19 @@ def bfs_traversal(graph, s, goals=[]):
     ***   ***---***   ***   ***---***---***---***---***---***   
     """
     visited = []
+    boundary = deque([s])
+    while len(boundary) > 0:
+        v = boundary.popleft()
+        visited += [v]
+        if v in goals:
+            return visited
+        for w in neighbours(v, graph):
+            if w not in visited and w not in boundary:
+                boundary.append(w)
+    return visited
+
+    """
+    visited = []
     boundary = [s]
     while len(boundary) > 0:
         v = boundary.pop(0)
@@ -124,6 +137,7 @@ def bfs_traversal(graph, s, goals=[]):
                     visited += [v]
                 break
     return visited
+    """
     
 def dfs_traversal(graph, s, goals=[]):
     """
@@ -154,6 +168,19 @@ def dfs_traversal(graph, s, goals=[]):
     while len(boundary) > 0:
         v = boundary.pop()
         visited += [v]
+        if v in goals:
+            return visited
+        for w in neighbours(v, graph):
+            if w not in visited and w not in boundary:
+                boundary.append(w)
+    return visited
+
+    """
+    visited = []
+    boundary = [s]
+    while len(boundary) > 0:
+        v = boundary.pop()
+        visited += [v]
         for w in neighbours(v, graph):
             if w not in visited and w not in boundary:
                 boundary.append(w)
@@ -161,6 +188,7 @@ def dfs_traversal(graph, s, goals=[]):
                     v = boundary.pop()
                     visited += [v]
     return visited
+"""
 
 def get_path(parent_list, s, e):
     reversed_path = [e]
@@ -199,6 +227,24 @@ def bfs_path(graph, s, goals=[]):
                 # put w's parent in the partent list
     return get_path(parents, goals[0], goals[1])
 
+"""
+def bfs_path(graph, s, goals=[]):
+    pred = [None] * len(graph)
+    visited = set()
+    boundary = deque([s])
+    while len(boundary) > 0:
+        v = boundary.popleft()
+        visited.add(v)
+        if v in goals:
+            return path_from_predlist(s, v, pred)
+        for w in neighbours(v, graph):
+            if w not in visited and w not in boundary:
+                pred[w] = v
+                boundary.append(w)
+    return None
+
+"""
+
 
 def dfs_path(graph, s, goals=[]):
     """
@@ -226,6 +272,22 @@ def dfs_path(graph, s, goals=[]):
                 parents[w] = v
     return get_path(parents, goals[0], goals[1])
 
+"""
+def dfs_path(graph, s, goals = []):
+    pred = [None] * len(graph)
+    visited = set()
+    boundary = deque([s])
+    while len(boundary) > 0:
+        v = boundary.pop()
+        visited.add(v)
+        if v in goals:
+            return path_from_predlist(s,v,pred)
+        for w in neighbours(v, graph):
+            if w not in visited and w not in boundary:
+                pred[w] = v
+                boundary.append(w)
+    return None
+"""
 
 if __name__=='__main__':
     """

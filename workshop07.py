@@ -157,7 +157,7 @@ if __name__ == '__main__':
 
 # Task 2 - Post Offices
 def dist(p1, p2):
-    """Computes Eucledian distance between points p1 and p2.
+    """Computes Euclidean distance between points p1 and p2.
     """
     dist = ((p1-p2)**2+(p1-p2)**2)**(1/2)
     return dist
